@@ -1,5 +1,11 @@
 import pandas as pd
+import sys
 from datetime import datetime, timedelta  # Import timedelta from the datetime module
+
+
+# Set pandas display options to show all rows and columns
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
 
 
 file = 'excel.xlsx'
@@ -29,6 +35,19 @@ result = pd.merge(result, df[['Employee Name', 'Position ID']].drop_duplicates()
 print ("part A")
 print(result)
 
+# Specify the file path to save the result
+output_file_path = 'resulta.txt'
+
+# Redirect standard output to the text file
+with open(output_file_path, 'w') as f:
+    sys.stdout = f
+    print(result[['Position ID', 'Employee Name']])
+
+# Reset standard output to the console
+sys.stdout = sys.__stdout__
+
+print(f"Result has been saved to: {output_file_path}")
+
 
 # code for part b
 
@@ -50,6 +69,19 @@ result = result.drop_duplicates(subset=['Position ID', 'Employee Name'])
 print ("Part B")
 print(result[['Position ID', 'Employee Name']])
 
+# Specify the file path to save the result
+output_file_path = 'resultb.txt'
+
+# Redirect standard output to the text file
+with open(output_file_path, 'w') as f:
+    sys.stdout = f
+    print(result[['Position ID', 'Employee Name']])
+
+# Reset standard output to the console
+sys.stdout = sys.__stdout__
+
+print(f"Result has been saved to: {output_file_path}")
+
 
 # code for part c 
 
@@ -70,3 +102,18 @@ result = df[df['Timecard Hours'] > 14]
 # Display Employee ID and Employee Name
 print("part C")
 print(result[['Position ID', 'Employee Name']])
+
+
+
+# Specify the file path to save the result
+output_file_path = 'resultc.txt'
+
+# Redirect standard output to the text file
+with open(output_file_path, 'w') as f:
+    sys.stdout = f
+    print(result[['Position ID', 'Employee Name']])
+
+# Reset standard output to the console
+sys.stdout = sys.__stdout__
+
+print(f"Result has been saved to: {output_file_path}")
